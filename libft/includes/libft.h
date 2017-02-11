@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:22:36 by thou              #+#    #+#             */
-/*   Updated: 2016/11/22 12:55:17 by thou             ###   ########.fr       */
+/*   Updated: 2017/02/09 17:29:44 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "get_next_line.h"
 
 typedef struct	s_list
 {
@@ -24,6 +25,9 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+char			*ft_strjoinf(char const *s1, char const *s2);
+char			*ft_strjoinch(char const *s1, char c);
+char			*ft_strsubc(char *src, char c);
 double			ft_clamp(double x, double min, double max);
 int				ft_islower(int c);
 int				ft_isupper(int c);
