@@ -42,7 +42,7 @@ int				get_next_line(const int fd, char **line)
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[ret] = '\0';
-		SAFEMALLOC((file->content = ft_strjoinf(file->content, buff)));
+		SAFEMALLOC((file->content = ft_strjoinfree(file->content, buff)));
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}

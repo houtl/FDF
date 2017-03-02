@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinch.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 17:05:37 by thou              #+#    #+#             */
-/*   Updated: 2016/12/15 17:21:10 by thou             ###   ########.fr       */
+/*   Created: 2016/11/10 15:20:00 by thou              #+#    #+#             */
+/*   Updated: 2017/02/26 17:43:19 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoinch(char const *s1, char c)
+char	*ft_strdup(const char *s1)
 {
-	char	*dst;
 	size_t	i;
-	size_t	len;
+	char	*c;
 
-	if (!s1 || !c)
+	i = ft_strlen(s1) + 1;
+	c = (char*)malloc(sizeof(char) * i);
+	if (c == NULL)
 		return (NULL);
-	len = ft_strlen(s1);
-	dst = ft_strnew(len + 2);
-	if (!dst)
-		return (NULL);
-	i = -1;
-	while (++i < len)
-		*(dst + i) = *(s1 + i);
-	*(dst + i) = c;
-	*(dst + i + 1) = 0;
-	return (dst);
+	return ((char*)ft_memcpy(c, s1, i));
 }

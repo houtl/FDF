@@ -25,8 +25,8 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-char			*ft_strjoinf(char const *s1, char const *s2);
-char			*ft_strjoinch(char const *s1, char c);
+char			*ft_strjoinfree(char const *s1, char const *s2);
+char			*ft_strjoinchar(char const *s1, char c);
 char			*ft_strsubc(char *src, char c);
 double			ft_clamp(double x, double min, double max);
 int				ft_islower(int c);
