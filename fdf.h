@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:14:03 by thou              #+#    #+#             */
-/*   Updated: 2017/03/07 13:50:47 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/07 18:02:27 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,19 @@ typedef struct		s_all
 	int				y_max;
 
 }					t_a;
+
+/* fdf.c */
+
+int			caralen(char *str);
+void		ft_error(char *str);
+static void	gnlvf(t_a *a, char *line);
+static void	readfile(t_a *a, char *str);
+int			main(int ac, char **av);
+
+/* struct.c */
+
+t_map		ft_newstruct(t_a *a);
+void		ft_creatmap(t_a *a, char *str, int y);
 
 
 #endif

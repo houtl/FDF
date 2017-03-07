@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/07 15:14:40 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/07 18:06:34 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		ft_error(char *str)
 	exit(1);
 }
 
-static void	vf_gnl(t_a *a, char *line)
+static void	gnlvf(t_a *a, char *line)
 {
 	if (a->e.tmp == -1)
 		ft_error("Not a good file");
@@ -52,6 +52,7 @@ static void	vf_gnl(t_a *a, char *line)
 static void	readfile(t_a *a, char *str)
 {
 	char	*line;
+	int		i;
 
 	while ((a->e.tmp = get_next_line(a->e.fd, &line)))
 	{
@@ -63,7 +64,15 @@ static void	readfile(t_a *a, char *str)
 		a->y_max++;
 		free(line);
 	}
-	vf_gnl(a, line);
+	gnlvf(a, line);
+	a->map = ft_newstruct(a);
+	a->e.fd = open(str, O_RDONLY)
+	while ((get_next_line(a->e.fd, &line)) != 0 && i++ < a->y_max)
+	{
+		ft_creatmap(a, line, (i - 1));
+		free(line);
+	}
+	gnlvf(a, line);
 }
 
 int			main(int ac, char **av)
