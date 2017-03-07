@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/02 18:02:55 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/07 15:14:40 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	vf_gnl(t_a *a, char *line)
 }
 
 
-static int	readfile(t_a *a, char *str)
+static void	readfile(t_a *a, char *str)
 {
 	char	*line;
 
