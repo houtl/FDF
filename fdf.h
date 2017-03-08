@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:14:03 by thou              #+#    #+#             */
-/*   Updated: 2017/03/07 18:02:27 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/08 17:58:33 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define DOWN	125
 # define LEFT	123
 # define RIGHT	124
+
+# define WIDTH	1920
+# define HEIGHT 1080
 
 typedef struct		s_environ
 {

@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/07 18:06:34 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/08 18:02:42 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ int			main(int ac, char **av)
 	if (!(a.e.fd = open(av[1], O_RDONLY)))
 		ft_error("File can not be opened");
 	readfile(&a, av[1]);
+	init(&a);
 }
