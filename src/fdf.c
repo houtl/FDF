@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/08 18:02:42 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/10 17:15:50 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	readfile(t_a *a, char *str)
 	}
 	gnlvf(a, line);
 	a->map = ft_newstruct(a);
-	a->e.fd = open(str, O_RDONLY)
+	a->e.fd = open(str, O_RDONLY);
 	while ((get_next_line(a->e.fd, &line)) != 0 && i++ < a->y_max)
 	{
 		ft_creatmap(a, line, (i - 1));

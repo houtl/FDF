@@ -1,24 +1,36 @@
 NAME		=	fdf
 FLAG		=	-Wall -Werror -Wextra
 FLAGMLX		=	-lmlx -framework OpenGL -framework Appkit
-SRC			=	*.c
+SRC_DIR		=	src/
+SRC			=	src/*.c
+OBJ_DIR		=	obj/
 LIBFT		=	./libft
+LFT			=	./libft/libft.a
 LIBMLX		=	./minilibx_macos
-INCLUDES	=	-I./libft/includes -I./minilibx_macos/
-OBJ			=	$(SRC:%.c=%.o)
+LMLX		=	./minilibx_macos/libmlx.a
+INCLUDES	=	-I./includes -I./libft/includes -I./minilibx_macos/
+OBJ		=	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 
-all: $(NAME)
+all: $(LFT) $(LMLX) $(NAME)
 
-$(NAME):
+$(LFT):
 	make -C $(LIBFT)
+
+$(LMLX):
 	make -C $(LIBMLX)
-	gcc -c $(FALG) $(FLAGMLX) $(SRC) $(INCLUDES)
-	gcc $(OBJ) -o $(NAME) -L$(LIBFT) -lft -L$(LIBMLX) $(INCLUDES)
+
+$(NAME): $(OBJ)
+	gcc $(FLAG) $(OBJ) -o $(NAME) -L$(LIBFT) -lft -L$(LIBMLX) $(FLAGMLX) $(INCLUDES)
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	mkdir -p $(OBJ_DIR)
+	gcc $(FLAG) -o $@ -c $< $(INCLUDES)
+
 
 clean:
 	make clean -C $(LIBMLX)
 	make clean -C $(LIBFT)
-	rm -rf $(OBJ)
+	rm -rf obj
 
 fclean: clean
 	make fclean -C $(LIBFT)

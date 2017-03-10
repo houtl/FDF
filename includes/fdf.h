@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:14:03 by thou              #+#    #+#             */
-/*   Updated: 2017/03/08 17:58:33 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/10 17:23:08 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct		s_environ
 	void			*win;
 	int				tmp;
 	int				fd;
+	int				background;
+	int				info;
+	int				iso;
 }					t_env;
 
 typedef struct		s_fdfmap
@@ -65,8 +68,14 @@ int			main(int ac, char **av);
 
 /* struct.c */
 
-t_map		ft_newstruct(t_a *a);
+t_map		**ft_newstruct(t_a *a);
 void		ft_creatmap(t_a *a, char *str, int y);
+void		ft_errorf(char *str, t_a *a);
+static void	caravf(t_a *a, char *str);
 
+/* map.c */
+
+void		init(t_a *a);
+void		fdf_new_image(t_a *a);
 
 #endif

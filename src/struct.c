@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 17:30:25 by thou              #+#    #+#             */
-/*   Updated: 2017/03/08 17:50:30 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/10 17:27:15 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_errorf(char *str, t_a *a)
 	ft_error(str);
 }
 
-t_map		ft_newstruct(t_a *a)
+t_map		**ft_newstruct(t_a *a)
 {
 	int		x;
 	int		y;
@@ -38,7 +38,7 @@ t_map		ft_newstruct(t_a *a)
 	y = -1;
 	while (++y < a->y_max)
 	{
-		if (!(a->map[y] = (t_map**)malloc(sizeof(t_map*) * a->x_max)))
+		if (!(a->map[y] = (t_map*)malloc(sizeof(t_map) * a->x_max)))
 			ft_error("Malloc Failed");
 		x = -1;
 		while (++x < a->x_max)
@@ -52,7 +52,7 @@ t_map		ft_newstruct(t_a *a)
 	return (a->map);
 }
 
-static void	caravf(t_a *a, char str)
+static void	caravf(t_a *a, char *str)
 {
 	int		i;
 
@@ -95,6 +95,6 @@ void		ft_creatmap(t_a *a, char *str, int y)
 					(str[i] >= 'A' && str[i] <= 'F') || str[i] == ',' ||
 					str[i] == 'x'))
 			i++;
-		find == 0;
+		find = 0;
 	}
 }
