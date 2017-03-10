@@ -76,14 +76,14 @@ SRCS					=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS					=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB						=	$(words $(SRC_BASE))
 INDEX					=	1	
-DELTA					=   $$(echo "$$(tput cols)-48"|bc)
+DELTA					=	$$(expr $$(tput cols) - 48)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\033[100D✅ \033[40C\033[K\c"
+	@echo "\033[$$(tput cols)D✅ \033[40C\033[K\c"
 	@echo "\n\033[48;5;15;38;5;25;1mMAKE $(NAME) DONE$(RESET)"
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
@@ -91,7 +91,7 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval COLOR=$(shell echo $$((89-$(PERCENT)/16))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\e[38;5;11m⌛ MAKE	$(NAME): \e[48;5;$(COLOR)m%*s\e[45;1m%*s$(RESET)$(YELLOW) %2d%% $(RESET) \e[38;5;11m %*s$(RESET)" $(DONE) "" $(TO_DO) "" $(PERCENT) $(DELTA) "$@"
+	@printf "\r\033[38;5;11m⌛ MAKE	$(NAME): \033[48;5;$(COLOR)m%*s\033[45;1m%*s$(RESET)$(YELLOW) %2d%% $(RESET) \033[38;5;11m %*s$(RESET)" $(DONE) "" $(TO_DO) "" $(PERCENT) $(DELTA) "$(notdir $@)"
 	@mkdir -p $(dir $@)
 	@gcc $(FLAG) -c $< -o $@
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
