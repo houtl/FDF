@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/10 17:15:50 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/11 17:56:46 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,6 @@ void		ft_error(char *str)
 	exit(1);
 }
 
-static void	gnlvf(t_a *a, char *line)
-{
-	if (a->e.tmp == -1)
-		ft_error("Not a good file");
-	if (a->x_max == 0 || a->y_max == 0)
-		ft_error("Empty File");
-	close(a->e.fd);
-}
-
-
 static void	readfile(t_a *a, char *str)
 {
 	char	*line;
@@ -59,20 +49,21 @@ static void	readfile(t_a *a, char *str)
 		if (a->y_max == 0)
 			a->x_max = caralen(line);
 		if (a->y_max != 0)
-			if(a->x_max != caralen(line))
+			if (a->x_max != caralen(line))
 				ft_error("Found wrong line length. Exiting.");
 		a->y_max++;
 		free(line);
 	}
-	gnlvf(a, line);
+	close(a->e.fd);
 	a->map = ft_newstruct(a);
 	a->e.fd = open(str, O_RDONLY);
+	i = 0;
 	while ((get_next_line(a->e.fd, &line)) != 0 && i++ < a->y_max)
 	{
 		ft_creatmap(a, line, (i - 1));
 		free(line);
 	}
-	gnlvf(a, line);
+	close(a->e.fd);
 }
 
 int			main(int ac, char **av)
@@ -85,4 +76,6 @@ int			main(int ac, char **av)
 		ft_error("File can not be opened");
 	readfile(&a, av[1]);
 	init(&a);
+	mlx_loop(a.e.mlx);
+	return (0);
 }
