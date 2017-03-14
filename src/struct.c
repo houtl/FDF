@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 17:30:25 by thou              #+#    #+#             */
-/*   Updated: 2017/03/11 17:56:06 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/14 16:28:32 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_errorf(char *str, t_a *a)
 	ft_error(str);
 }
 
-t_map		**ft_newstruct(t_a *a)
+t_map		**ft_newmap(t_a *a)
 {
 	int		x;
 	int		y;
@@ -39,7 +39,7 @@ t_map		**ft_newstruct(t_a *a)
 	while (++y < a->y_max)
 	{
 		if (!(a->map[y] = (t_map*)malloc(sizeof(t_map) * a->x_max)))
-			ft_error("Malloc Failed");
+			ft_errorf("Malloc Failed", a);
 		x = -1;
 		while (++x < a->x_max)
 		{
@@ -81,9 +81,9 @@ void		ft_creatmap(t_a *a, char *str, int y)
 	{
 		while (str[i] && str[i] != '-' && (str[i] < '0' || str[i] > '9'))
 			i++;
-		while (str[i] && (str[i] == '-' || ft_isdigit(str[i])) && x < a->x_max)
+		if (str[i])
 		{
-			a->map[y][x].z = ft_atoi(str + i);
+			a->map[y][x].z = ft_atoi((str + i));
 			a->map[y][x].zo = a->map[y][x].z;
 			x++;
 		}
