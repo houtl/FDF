@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 18:13:41 by thou              #+#    #+#             */
-/*   Updated: 2017/03/15 15:55:41 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/15 18:00:12 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 static void		ft_p_pixel_image(t_a *a, int y, int x, int color)
 {
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-<<<<<<< HEAD
-	*(unsigned int*)(a->e.data + (x * (a->e.bpp)) + (y * a->e.sl)) = color;
-=======
 		*(unsigned int*)(a->e.data + (x * (a->e.bpp)) + (y * a->e.sl)) = color;
->>>>>>> 8a23539b0e0ed47fe918eb79b024d5e35c70373c
 }
 
 static void		ligne_if(t_a *a, int color)
