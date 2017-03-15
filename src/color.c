@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 15:00:39 by thou              #+#    #+#             */
-/*   Updated: 2017/03/14 18:06:08 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/15 12:32:56 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void        put_color(t_a *a)
 
 int			loca_color(t_a *a, int z)
 {
-	int		i;
+	double	i;
 
 	i = a->e.z_len / 10;
 	if (z >= a->z_min && z < (a->z_min + (i * 1)))
@@ -49,7 +49,7 @@ int			loca_color(t_a *a, int z)
 		return (SKY);
 	else if (z >= (a->z_min + (i * 8)) && z < (a->z_min + (i * 9)))
 		return (BLUE_C);
-	else if (z >= (a->z_min + (i * 9)) && z < a->z_max)
+	else if (z >= (a->z_min + (i * 9)) && z <= a->z_max)
 		return (BLUE);
 	return (0xFFFFFF);
 }

@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/14 17:14:32 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/15 17:55:15 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	readfile(t_a *a, char *str)
 		ft_error("No data found.");
 	a->map = ft_newmap(a);
 	a->e.fd = open(str, O_RDONLY);
-	while (!(get_next_line(a->e.fd, &line)) && a->e.tmp++ < a->y_max)
+	while ((get_next_line(a->e.fd, &line)) > 0 && a->e.tmp++ < a->y_max)
 	{
 		ft_creatmap(a, line, (a->e.tmp - 1));
 		free(line);
@@ -96,6 +96,7 @@ int			main(int ac, char **av)
 	a.e.touch_z = 1;
 	a.x_max = 0;
 	a.y_max = 0;
+	a.k = 10;
 	if (ac < 2)
 		ft_error("usage: fdf fdf_file");
 	if ((a.e.fd = open(av[1], O_RDONLY)) == -1)
@@ -103,8 +104,8 @@ int			main(int ac, char **av)
 	readfile(&a, av[1]);
 	init(&a);
 	clamp_z(&a);
-	ft_print_to_image_bresenham(&a);
-	mlx_key_hook(a.e.win, my_fonct_key, &a);
+	ft_print_image(&a);
+	mlx_hook(a.e.win, 2, (1L << 01), my_fonct_key, &a);
 	mlx_loop(a.e.mlx);
 	return (0);
 }

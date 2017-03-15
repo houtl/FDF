@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:14:03 by thou              #+#    #+#             */
-/*   Updated: 2017/03/14 15:42:02 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/15 17:55:47 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,33 @@
 # include <math.h>
 # include <fcntl.h>
 
-# define BLUE 0x0901F7
-# define BLUE_C 0x015BF7
-# define SKY 0x01B5F7
-# define LAGON 0x33AB9B
-# define WGREEN 0x01F79D
-# define RAZER 0x01F74B
-# define LIMON 0xADF701
-# define YELLOW 0xEFF701
-# define ORANGE 0xF78C01
-# define RED 0xFE4D01
-# define BACKGROUND 0x4C1B1B
+# define BLUE		0x0901F7
+# define BLUE_C		0x015BF7
+# define SKY		0x01B5F7
+# define LAGON		0x33AB9B
+# define WGREEN		0x01F79D
+# define RAZER		0x01F74B
+# define LIMON		0xADF701
+# define YELLOW		0xEFF701
+# define ORANGE		0xF78C01
+# define RED		0xFE4D01
+# define BACKGROUND	0x4C1B1B
 
 # define UP		126
 # define DOWN	125
 # define LEFT	123
 # define RIGHT	124
 # define EXIT	53
+# define ISO_Z	6
+# define HELP	4
+# define BG		11
+# define ISO	34
+# define HIGH	13
+# define LOW	1
+# define GRAND	69
+# define PETIT	78
+# define ORIGIN	31
+# define ORIGIN_Z 35
 
 # define WIDTH	1920
 # define HEIGHT 1080
@@ -54,7 +64,7 @@ typedef struct		s_environ
 	int				bpp;
 	int				sl;
 	int				ed;
-	int				z_len;
+	double			z_len;
 	int				touch_z;
 }					t_env;
 
@@ -67,10 +77,10 @@ typedef struct		s_point
 
 typedef struct		s_fdfmap
 {
-	int				x;
-	int				y;
-	int				z;
-	int				zo;
+	double			x;
+	double			y;
+	double			z;
+	double			zo;
 	int				color;
 }					t_map;
 
@@ -97,8 +107,11 @@ typedef struct		s_all
 	int				y;
 	int				x_max;
 	int				y_max;
-	int				z_max;
-	int				z_min;
+	double			z_max;
+	double			z_min;
+	double			x_mid;
+	double			y_mid;
+	double			k;
 }					t_a;
 
 /* fdf.c */
@@ -108,13 +121,13 @@ int			caralen(char *str);
 void		ft_error(char *str);
 int			main(int ac, char **av);
 
-/* struct.c */
+/* map.c */
 
 t_map		**ft_newmap(t_a *a);
 void		ft_creatmap(t_a *a, char *str, int y);
 void		ft_errorf(char *str, t_a *a);
 
-/* map.c */
+/* image.c */
 
 void		init(t_a *a);
 void		fdf_new_image(t_a *a);
@@ -128,7 +141,7 @@ int         loca_color(t_a *a, int z);
 
 int         recover_point(t_a *a, int x, int y, char c);
 void        ft_print_image_x(t_a *a, int x, int y);
-void        ft_print_to_image_bresenham(t_a *a);
+void        ft_print_image(t_a *a);
 
 /* ligne.c */
 
