@@ -1,3 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/03/16 16:49:12 by thou              #+#    #+#              #
+#    Updated: 2017/03/16 16:57:30 by thou             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+BLACK					=	\033[30;1m
+RED						=	\033[31;1m
+GREEN					=	\033[32;1m
+YELLOW					=	\033[33;1m
+BLUE					=	\033[34;1m
+PURPLE					=	\033[35;1m
+CYAN					=	\033[36;1m
+WHITE					=	\033[37;1m
+RESET					=	\033[0m
+CLEAR					=	\033[H\e[J
+
 NAME		=	fdf
 FLAG		=	-Wall -Werror -Wextra
 FLAGMLX		=	-lmlx -framework OpenGL -framework Appkit
@@ -15,26 +38,30 @@ OBJ		=	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 all: $(LFT) $(LMLX) $(NAME)
 
 $(LFT):
-	make -C $(LIBFT)
+	@make -C $(LIBFT)
 
 $(LMLX):
-	make -C $(LIBMLX)
+	@make -C $(LIBMLX)
 
 $(NAME): $(OBJ)
-	gcc $(FLAG) $(OBJ) -o $(NAME) -L$(LIBFT) -lft -L$(LIBMLX) $(FLAGMLX) $(INCLUDES)
+	@gcc $(FLAG) $(OBJ) -o $(NAME) -L$(LIBFT) -lft -L$(LIBMLX) $(FLAGMLX) $(INCLUDES)
+	@echo "\n\033[48;5;15;38;5;25;1mMAKE $(NAME) DONE\033[0m"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
-	mkdir -p $(OBJ_DIR)
-	gcc $(FLAG) -o $@ -c $< $(INCLUDES)
+	@mkdir -p $(OBJ_DIR)
+	@gcc $(FLAG) -o $@ -c $< $(INCLUDES)
 
 
 clean:
-	make clean -C $(LIBMLX)
-	make clean -C $(LIBFT)
-	rm -rf obj
+	@make clean -C $(LIBMLX)
+	@make clean -C $(LIBFT)
+	@rm -rf obj
 
-fclean: clean
-	make fclean -C $(LIBFT)
-	rm -rf $(NAME)
+fclean: 
+	@make fclean -C $(LIBFT)
+	@make clean -C $(LIBMLX)
+	@rm -rf obj
+	@rm -rf $(NAME)
+	@echo "$(YELLOW)Clean	fdf$(GREEN)			[ OK ]$(RESET)"
 
 re: fclean all

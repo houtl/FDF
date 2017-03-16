@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 17:08:35 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 16:35:09 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 16:59:22 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void		ft_put_info(t_a *a)
 
 	i = 5;
 	line = "press H for more information";
-	mlx_string_put(a->e.mlx, a->e.win, 20, 5, RAZER, line);
+	mlx_string_put(a->e.mlx, a->e.win, 20, 5, YELLOW, line);
 	fd = open(".info", O_RDONLY);
 	while (a->e.info == 1 && (get_next_line(fd, &line)) > 0)
 	{
-		mlx_string_put(a->e.mlx, a->e.win, 20, (i += 20), WGREEN, line);
+		mlx_string_put(a->e.mlx, a->e.win, 20, (i += 20), RAZER, line);
 		free(line);
 	}
 	close(fd);
