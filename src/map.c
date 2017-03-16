@@ -6,11 +6,22 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 17:30:25 by thou              #+#    #+#             */
-/*   Updated: 2017/03/15 17:23:44 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 15:03:02 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+static void ft_palette_color(char *str, int x, int y, t_a *a)
+{
+	char	*c;
+
+	c = str;
+	if (*c == '0' && c[1] == 'x')
+	{
+		a->map[y][x].color = ft_atoi_base((c + 2), 16);
+		a->map[y][x].fc = 1;
+	}
+}
 
 void		ft_errorf(char *str, t_a *a)
 {
@@ -30,7 +41,7 @@ t_map		**ft_newmap(t_a *a)
 	int		x;
 	int		y;
 
-	a->e.iso = 1;
+	a->e.iso = -1;
 	if (!(a->map = (t_map **)malloc(sizeof(t_map*) * a->y_max)))
 	{
 		free(a->map);
@@ -91,6 +102,7 @@ void		ft_creatmap(t_a *a, char *str, int y)
 		while (str[i] && (str[i] == '-' || ft_isdigit(str[i]) ||
 					(str[i] >= 'A' && str[i] <= 'F') || str[i] == ',' ||
 					str[i] == 'x'))
-			i++;
+			if (str[i++] == ',')
+				ft_palette_color((str + i), (x - 1), y, a);
 	}
 }

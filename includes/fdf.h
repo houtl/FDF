@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:14:03 by thou              #+#    #+#             */
-/*   Updated: 2017/03/15 17:55:47 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 16:14:46 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # include <fcntl.h>
 
+# define WHITE		0xFFFFFF
 # define BLUE		0x0901F7
 # define BLUE_C		0x015BF7
 # define SKY		0x01B5F7
@@ -43,8 +44,8 @@
 # define LOW	1
 # define GRAND	69
 # define PETIT	78
-# define ORIGIN	31
-# define ORIGIN_Z 35
+# define ORIGIN	15
+# define ORIGIN_Z 0
 
 # define WIDTH	1920
 # define HEIGHT 1080
@@ -65,7 +66,6 @@ typedef struct		s_environ
 	int				sl;
 	int				ed;
 	double			z_len;
-	int				touch_z;
 }					t_env;
 
 typedef struct		s_point
@@ -82,6 +82,7 @@ typedef struct		s_fdfmap
 	double			z;
 	double			zo;
 	int				color;
+	int				fc;
 }					t_map;
 
 typedef struct		s_bresenham
@@ -135,17 +136,17 @@ void		fdf_new_image(t_a *a);
 /* color.c */
 
 void		put_color(t_a *a);
-int         loca_color(t_a *a, int z);
+int			loca_color(t_a *a, int z);
 
 /* print.c */
 
-int         recover_point(t_a *a, int x, int y, char c);
-void        ft_print_image_x(t_a *a, int x, int y);
-void        ft_print_image(t_a *a);
+int			recover_point(t_a *a, int x, int y, char c);
+void		ft_print_image_x(t_a *a, int x, int y);
+void		ft_print_image(t_a *a);
 
 /* ligne.c */
 
-void            ligne(t_a *a, int color);
+void		ligne(t_a *a, int color);
 
 /* key.c */
 

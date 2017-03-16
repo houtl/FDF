@@ -1,0 +1,10 @@
+language: c
+script:
+    - make re
+os:
+    - osx
+    - linux
+env:
+    - ARCH=x86_64
+compiler:
+    - clang

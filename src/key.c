@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:35:35 by thou              #+#    #+#             */
-/*   Updated: 2017/03/15 17:56:54 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 15:33:08 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	origin(t_a *a)
 	int	y;
 
 	y = -1;
+	a->e.iso = -1;
+	a->e.info = -1;
 	while (++y < a->y_max)
 	{
 		x = -1;
@@ -42,15 +44,13 @@ static void	hauter(t_a *a, int keycode)
 		while (++x < a->x_max)
 		{
 			if (keycode == HIGH)
-			{
 				a->map[y][x].z *= 1.1;
-				a->k *= 1.1;
-			}
 			else if (keycode == LOW)
-			{
 				a->map[y][x].z /= 1.1;
-				a->k /= 1.1;
-			}
+			else if (keycode == ISO_Z)
+				a->map[y][x].z *= -1;
+			else if (keycode == ORIGIN_Z)
+				a->map[y][x].z = a->map[y][x].zo;
 		}
 	}
 }
@@ -61,8 +61,8 @@ static void	change(t_a *a, int keycode)
 	int y;
 
 	y = -1;
-	a->x_mid = a->map[a->y_max - 1][a->x_max - 1].x - a->map[0][0].x;
-	a->y_mid = a->map[a->y_max - 1][a->x_max - 1].y - a->map[0][0].y;
+	a->x_mid = (a->map[a->y_max - 1][a->x_max - 1].x + a->map[0][0].x) / 2;
+	a->y_mid = (a->map[a->y_max - 1][a->x_max - 1].y + a->map[0][0].y) / 2;
 	while (++y < a->y_max)
 	{
 		x = -1;
@@ -70,11 +70,13 @@ static void	change(t_a *a, int keycode)
 		{
 			if (keycode == GRAND)
 			{
+				a->k *= 1.1;
 				a->map[y][x].x = a->x_mid + (a->map[y][x].x - a->x_mid) * 1.1;
 				a->map[y][x].y = a->y_mid + (a->map[y][x].y - a->y_mid) * 1.1;
 			}
 			if (keycode == PETIT)
 			{
+				a->k /= 1.1;
 				a->map[y][x].x = a->x_mid + (a->map[y][x].x - a->x_mid) / 1.1;
 				a->map[y][x].y = a->y_mid + (a->map[y][x].y - a->y_mid) / 1.1;
 			}
@@ -122,11 +124,11 @@ int		my_fonct_key(int keycode, t_a *a)
 	if (keycode == HELP)
 		a->e.info *= -1;
 	if (keycode == ISO_Z)
-		a->e.iso *= -1;
+		hauter(a, keycode);
 	if (keycode == ORIGIN)
 		origin(a);
 	if (keycode == ORIGIN_Z)
-		a->e.iso = -1;
+		hauter(a, keycode);
 	fdf_new_image(a);
 	ft_print_image(a);
 	return (0);

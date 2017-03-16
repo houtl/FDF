@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:22:36 by thou              #+#    #+#             */
-/*   Updated: 2017/02/09 17:29:44 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 12:59:38 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+int				ft_atoi_base(const char *str, int base);
 char			*ft_strjoinfree(char const *s1, char const *s2);
 char			*ft_strjoinchar(char const *s1, char c);
 char			*ft_strsubc(char *src, char c);
