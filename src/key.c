@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:35:35 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 15:33:08 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 17:27:12 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	origin(t_a *a)
 		x = -1;
 		while (++x < a->x_max)
 		{
-			a->map[y][x].x = x * 10 + (WIDTH - a->x_max * 10) / 2 + (a->y_max * 5);
+			a->map[y][x].x = x * 10 + (WIDTH - a->x_max * 10) / 2 - (a->y_max * 5);
 			a->map[y][x].y = y * 10 + (HEIGHT - a->y_max * 10) / 2;
 			a->map[y][x].z = a->map[y][x].zo;
 		}
