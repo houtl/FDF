@@ -6,12 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 17:30:25 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 17:28:08 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 18:00:30 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-static void ft_palette_color(char *str, int x, int y, t_a *a)
+
+static void	ft_palette_color(char *str, int x, int y, t_a *a)
 {
 	char	*c;
 
@@ -55,7 +56,7 @@ t_map		**ft_newmap(t_a *a)
 		x = -1;
 		while (++x < a->x_max)
 		{
-			a->map[y][x].x = x * 10 + (WIDTH - a->x_max * 10) / 2 - (a->y_max * 5);
+			a->map[y][x].x = x * 10 + WIDTH / 2 - a->x_max * 5 - a->y_max * 5;
 			a->map[y][x].y = y * 10 + (HEIGHT - a->y_max * 10) / 2;
 			a->map[y][x].z = 0;
 			a->map[y][x].color = 0;

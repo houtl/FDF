@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:35:35 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 17:27:12 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 18:05:43 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	origin(t_a *a)
 		x = -1;
 		while (++x < a->x_max)
 		{
-			a->map[y][x].x = x * 10 + (WIDTH - a->x_max * 10) / 2 - (a->y_max * 5);
+			a->map[y][x].x = x * 10 + WIDTH / 2 - a->x_max * 5 - a->y_max * 5;
 			a->map[y][x].y = y * 10 + (HEIGHT - a->y_max * 10) / 2;
 			a->map[y][x].z = a->map[y][x].zo;
 		}
@@ -102,12 +102,12 @@ static void	move(t_a *a, int keycode)
 			else if (keycode == UP)
 				a->map[y][x].y -= 20;
 			else if (keycode == DOWN)
-				a->map[y][x].y +=20;
+				a->map[y][x].y += 20;
 		}
 	}
 }
 
-int		my_fonct_key(int keycode, t_a *a)
+int			my_fonct_key(int keycode, t_a *a)
 {
 	if (keycode == EXIT)
 		ft_errorf("EXIT FDF", a);

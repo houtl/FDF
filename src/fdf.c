@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 17:13:57 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 16:21:37 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 18:02:13 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		clamp_z(t_a *a)
+static void	clamp_z(t_a *a)
 {
 	int x;
 	int y;
@@ -35,7 +35,7 @@ void		clamp_z(t_a *a)
 	put_color(a);
 }
 
-int			caralen(char *str)
+static int	caralen(char *str)
 {
 	int		i;
 	int		len;
@@ -71,7 +71,7 @@ static void	readfile(t_a *a, char *str)
 		if (a->y_max++ == 0)
 			a->x_max = caralen(line);
 		else if (a->x_max != caralen(line))
-				ft_error("Found wrong line length. Exiting.");
+			ft_error("Found wrong line length. Exiting.");
 		free(line);
 	}
 	close(a->e.fd);

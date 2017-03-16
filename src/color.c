@@ -6,16 +6,16 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 15:00:39 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 15:40:56 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 17:48:05 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void        put_color(t_a *a)
+void		put_color(t_a *a)
 {
-	int     x;
-	int     y;
+	int		x;
+	int		y;
 
 	y = -1;
 	while (++y < a->y_max)
@@ -32,8 +32,6 @@ int			loca_color(t_a *a, int z)
 	double	i;
 
 	i = a->e.z_len / 10;
-	if (z == a->z_min)
-		return (WHITE);
 	if (z > a->z_min && z <= (a->z_min + (i * 1)))
 		return (RED);
 	else if (z > (a->z_min + (i * 1)) && z <= (a->z_min + (i * 2)))
@@ -54,5 +52,5 @@ int			loca_color(t_a *a, int z)
 		return (BLUE_C);
 	else if (z > (a->z_min + (i * 9)) && z <= a->z_max)
 		return (BLUE);
-	return (0xFFFFFF);
+	return (WHITE);
 }

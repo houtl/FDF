@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:14:03 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 16:14:46 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 18:13:59 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,24 @@
 # define RED		0xFE4D01
 # define BACKGROUND	0x4C1B1B
 
-# define UP		126
-# define DOWN	125
-# define LEFT	123
-# define RIGHT	124
-# define EXIT	53
-# define ISO_Z	6
-# define HELP	4
-# define BG		11
-# define ISO	34
-# define HIGH	13
-# define LOW	1
-# define GRAND	69
-# define PETIT	78
-# define ORIGIN	15
-# define ORIGIN_Z 0
+# define UP			126
+# define DOWN		125
+# define LEFT		123
+# define RIGHT		124
+# define EXIT		53
+# define ISO_Z		6
+# define HELP		4
+# define BG			11
+# define ISO		34
+# define HIGH		13
+# define LOW		1
+# define GRAND		69
+# define PETIT		78
+# define ORIGIN		15
+# define ORIGIN_Z	0
 
-# define WIDTH	1920
-# define HEIGHT 1080
+# define WIDTH		1920
+# define HEIGHT 	1080
 
 typedef struct		s_environ
 {
@@ -115,41 +115,53 @@ typedef struct		s_all
 	double			k;
 }					t_a;
 
-/* fdf.c */
+/*
+** fdf.c
+*/
 
-void		clamp_z(t_a *a);
-int			caralen(char *str);
-void		ft_error(char *str);
-int			main(int ac, char **av);
+void				ft_error(char *str);
+int					main(int ac, char **av);
 
-/* map.c */
+/*
+** map.c
+*/
 
-t_map		**ft_newmap(t_a *a);
-void		ft_creatmap(t_a *a, char *str, int y);
-void		ft_errorf(char *str, t_a *a);
+t_map				**ft_newmap(t_a *a);
+void				ft_creatmap(t_a *a, char *str, int y);
+void				ft_errorf(char *str, t_a *a);
 
-/* image.c */
+/*
+** image.c
+*/
 
-void		init(t_a *a);
-void		fdf_new_image(t_a *a);
+void				init(t_a *a);
+void				fdf_new_image(t_a *a);
 
-/* color.c */
+/*
+** color.c
+*/
 
-void		put_color(t_a *a);
-int			loca_color(t_a *a, int z);
+void				put_color(t_a *a);
+int					loca_color(t_a *a, int z);
 
-/* print.c */
+/*
+** print.c
+*/
 
-int			recover_point(t_a *a, int x, int y, char c);
-void		ft_print_image_x(t_a *a, int x, int y);
-void		ft_print_image(t_a *a);
+int					recover_point(t_a *a, int x, int y, char c);
+void				ft_print_image(t_a *a);
 
-/* ligne.c */
+/*
+** ligne.c
+*/
 
-void		ligne(t_a *a, int color);
+void				ft_p_pixel_image(t_a *a, int y, int x, int color);
+void				ligne(t_a *a, int color);
 
-/* key.c */
+/*
+** key.c
+*/
 
-int			my_fonct_key(int keycode, t_a *a);
+int					my_fonct_key(int keycode, t_a *a);
 
 #endif

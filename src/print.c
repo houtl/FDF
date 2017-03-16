@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 17:08:35 by thou              #+#    #+#             */
-/*   Updated: 2017/03/16 16:59:22 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 18:03:22 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			recover_point(t_a *a, int x, int y, char c)
 	return (0);
 }
 
-void		ft_print_image_x(t_a *a, int x, int y)
+static void	ft_print_image_x(t_a *a, int x, int y)
 {
 	if (a->map[y][x].z < a->map[y][x + 1].z)
 	{

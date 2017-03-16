@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/08 17:53:08 by thou              #+#    #+#             */
-/*   Updated: 2017/03/15 14:23:08 by thou             ###   ########.fr       */
+/*   Created: 2017/03/16 17:48:32 by thou              #+#    #+#             */
+/*   Updated: 2017/03/16 17:56:40 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_background(t_a *a)
+static void	ft_background(t_a *a)
 {
 	int x;
 	int y;
@@ -22,11 +22,11 @@ void	ft_background(t_a *a)
 	{
 		x = -1;
 		while (++x < WIDTH)
-			*(unsigned int*)(a->e.data + (x * a->e.bpp) + (y * a->e.sl)) = BACKGROUND;
+			ft_p_pixel_image(a, y, x, BACKGROUND);
 	}
 }
 
-void	fdf_new_image(t_a *a)
+void		fdf_new_image(t_a *a)
 {
 	a->e.img = mlx_new_image(a->e.mlx, WIDTH, HEIGHT);
 	a->e.data = mlx_get_data_addr(a->e.img, &a->e.bpp, &a->e.sl, &a->e.ed);
@@ -37,7 +37,7 @@ void	fdf_new_image(t_a *a)
 		ft_background(a);
 }
 
-void	init(t_a *a)
+void		init(t_a *a)
 {
 	if (!(a->e.mlx = mlx_init()))
 		ft_errorf("mlx_init error", a);

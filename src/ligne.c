@@ -6,13 +6,13 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 18:13:41 by thou              #+#    #+#             */
-/*   Updated: 2017/03/15 18:00:12 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/16 17:54:34 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void		ft_p_pixel_image(t_a *a, int y, int x, int color)
+void			ft_p_pixel_image(t_a *a, int y, int x, int color)
 {
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 		*(unsigned int*)(a->e.data + (x * (a->e.bpp)) + (y * a->e.sl)) = color;
