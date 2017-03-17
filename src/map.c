@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 11:10:28 by thou              #+#    #+#             */
-/*   Updated: 2017/03/17 11:10:31 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/17 13:48:00 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void		ft_errorf(char *str, t_a *a)
 	a->e.tmp = 0;
 	if (a->map != NULL)
 	{
-		mlx_clear_window(a->e.mlx, a->e.win);
-		mlx_destroy_window(a->e.mlx, a->e.win);
+		if (a->e.mlx != NULL && a->e.win != NULL)
+		{
+			mlx_clear_window(a->e.mlx, a->e.win);
+			mlx_destroy_window(a->e.mlx, a->e.win);
+		}
 		free(a->e.mlx);
 		free(a->map);
 	}
