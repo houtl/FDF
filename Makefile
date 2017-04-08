@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/16 16:49:12 by thou              #+#    #+#              #
-#    Updated: 2017/03/16 17:53:39 by thou             ###   ########.fr        #
+#    Updated: 2017/04/08 18:15:24 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LFT			=	./libft/libft.a
 LIBMLX		=	./minilibx_macos
 LMLX		=	./minilibx_macos/libmlx.a
 INCLUDES	=	-I./includes -I./libft/includes -I./minilibx_macos/
-OBJ		=	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
+OBJ			=	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 
 all: $(LFT) $(LMLX) $(NAME)
 
@@ -44,7 +44,7 @@ $(LMLX):
 	@make -C $(LIBMLX)
 
 $(NAME): $(OBJ)
-	@gcc $(FLAG) $(OBJ) -o $(NAME) -L$(LIBFT) -lft -L$(LIBMLX) $(FLAGMLX) $(INCLUDES)
+	@/usr/bin/gcc $(FLAG) $(OBJ) -o $(NAME) -L$(LIBFT) -lft -L$(LIBMLX) $(FLAGMLX) $(INCLUDES)
 	@echo "\033[48;5;15;38;5;25;1mMAKE $(NAME) DONE$(RESET)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c

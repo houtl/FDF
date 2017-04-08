@@ -6,15 +6,13 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/17 11:10:45 by thou              #+#    #+#              #
-#    Updated: 2017/03/17 11:13:40 by thou             ###   ########.fr        #
+#    Updated: 2017/04/08 18:18:09 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 language: c
 script:
-    - make re
-    - ./fdf maps/42.fdf
-    - ./fdf maps/pyramide.fdf
+    - env -i make re
 os:
     - osx
 env:
